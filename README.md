@@ -42,7 +42,7 @@ This native Java Agent allows you to change the time in a Java program, without 
 
 The JavaVM may decide to recompile byte-code to assembly code (just in time-compilation) when it notices that a certain method is used often. After such a recompilation of the code the faketime magic which uses rebinding of Java native methods may stop working. If this is effect is observable depends on the actual number of invocation of `System.currentTimeMillis()` and whether the VM options `-client` and `-server` are set. The following JavaVM options work around this problem by excluding the method from the compilation and inline expansion process:
 
-     -XX:CompileCommand=exclude,java/lang/System.currentTimeMillis -XX:CompileCommand=dontinline,java/lang/System.nanoTime
+     -XX:CompileCommand=exclude,java/lang/System.currentTimeMillis -XX:CompileCommand=dontinline,java/lang/System.currentTimeMillis
 
 
 * That's it! Take a look at [FakeTimeTest.java](https://github.com/arvindsv/faketime/blob/master/FakeTimeTest.java) if you need to see some Java code which uses it.
